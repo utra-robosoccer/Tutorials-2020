@@ -13,7 +13,7 @@
     </visual>
     <collision>
       <geometry>
-        <box size=".15 .10 .05"/>
+        <box size=".07 .09 .12"/>
       </geometry>
     </collision>
     <inertial>
