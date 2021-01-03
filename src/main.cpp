@@ -36,7 +36,7 @@ int main(int argc, char **argv) {
     }
     if (input == 's') {
       //rotate counter clockwise
-      head_position.data -= 0.1;
+      head_position -= 0.1;
     }
     headMsg.data = head_position;
     
