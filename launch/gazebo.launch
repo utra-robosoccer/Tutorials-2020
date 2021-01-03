@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- our xacro/urdf model -->
+  <arg name="model" value="$(find tutorial)/urdf/bot.xacro"/>
+
+  <!-- load our urdf model (string) into global parameter called "robot_description"-->
+  <!-- xacro parses xacro files and returns a urdf file -->
+  <param name="robot_description"
+         command="$(find xacro)/xacro $(arg model)" />
+
+  <!-- We use empty_world.launch to start gazebo, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="false" />
+    <arg name="gui" value="true" />
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="headless" value="false"/>
+  </include>
+
+
+  <!-- Spawn our robot using urdf_spawner node -->
+  <node name="urdf_spawner"
+        pkg="gazebo_ros"
+        type="spawn_model"
+        respawn="false"
+        output="screen"
+        args="-z 1.0
+              -unpause
+              -urdf
+              -model robot
+              -param robot_description"/>
+
+  <!-- load multiple values stored in .yaml file into global parameters -->
+  <!-- parameters store motor controller configurations -->
+  <rosparam command="load"
+            file="$(find tutorial)/config/joints.yaml" />
+  
+  <!-- Spawn controllers -->
+  <node name="bot_controller_spawner"
+        pkg="controller_manager"
+        type="spawner"
+        args="joint_state_controller
+              right_arm_controller
+              left_arm_controller
+              head_controller" />
+</launch>
+
+

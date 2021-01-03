@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
+  <xacro:macro name="arm" params="prefix radius length reflect">
+    <link name="${prefix}_arm">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0.04"/>
+        <geometry>
+          <cylinder length="${length}" radius="${radius}"/>
+        </geometry>
+        <material name="my_colour">
+          <color rgba="0 1.0 1.0 0"/>
+        </material>
+      </visual>
+      
+      <collision>
+        <geometry>
+          <cylinder length="${length}" radius="${radius}"/>
+        </geometry>
+      </collision>
+      
+      <inertial>
+        <mass value="1"/>
+        <inertia ixx="0.06" ixy="0.0" ixz="0.0" iyy="0.06" iyz="0.0" izz="0.25"/>
+      </inertial>
+    </link>
+    
+    <joint name="base_to_${prefix}_arm" type="continuous">
+      <axis xyz="0 1 0"/>
+      <parent link="base_link"/>
+      <child link="${prefix}_arm"/>
+      <origin rpy="0 0 0" xyz="0 ${0.06*reflect} 0.0"/>
+    </joint>
+    
+    <transmission name="${prefix}_arm_transmission">
+      <type>transmission_interface/SimpleTransmission</type>
+      <actuator name="$${prefix}_motor">
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+      <joint name="base_to_${prefix}_arm">
+        <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+      </joint>
+    </transmission>
+  </xacro:macro>
+</robot>
+
