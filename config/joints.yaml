@@ -1,15 +1,15 @@
-joint_state_controller:
+sumo_joint_state_controller:
   type: "joint_state_controller/JointStateController"
   publish_rate: 50
 
-head_controller:
+sumo_camera_controller:
   type: "position_controllers/JointPositionController"
-  joint: base_to_head
+  joint: base_to_camera
 
-right_arm_controller:
+sumo_right_wheel_controller:
   type: "velocity_controllers/JointVelocityController"
-  joint: base_to_right_arm
+  joint: base_to_right_wheel
 
-left_arm_controller:
+sumo_left_wheel_controller:
   type: "velocity_controllers/JointVelocityController"
-  joint: base_to_left_arm
+  joint: base_to_left_wheel

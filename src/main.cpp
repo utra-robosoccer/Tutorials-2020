@@ -4,44 +4,37 @@
 #include <iostream>
 
 int main(int argc, char **argv) {
-  
-  ros::init(argc, argv, "my_node");
-
+  ros::init(argc, argv, "talker");
   ros::NodeHandle n;
-
-  ros::Publisher leftPub = n.advertise<std_msgs::Float64>("/left_arm_controller/command", 1000);
-  ros::Publisher headPub = n.advertise<std_msgs::Float64>("/head_controller/command", 1000);
   
-  float head_position = 0.0;
-  char input = 0;
-  while(ros::ok()){
-    std::cout << "pausing for input\n";
+  ros::Publisher leftWheelPub = n.advertise<std_msgs::Float64>("/sumo_left_wheel_controller/command", 1000);
+  ros::Publisher rightWheelPub = n.advertise<std_msgs::Float64>("/sumo_right_wheel_controller/command", 1000);
+  
+  float leftSpeed = 0;
+  float rightSpeed = 0;
+  
+  while (ros::ok())
+  {
+    // wait for user input
+    char input{0};
     std::cin >> input;
     
-    std_msgs::Float64 leftSpeed;
-    std_msgs::Float64 headMsg;
-    
-    if (input == 'q') {
-      //rotate clockwise
-      leftSpeed.data = 1.0;
-    }
-    if (input == 'w') {
-      //rotate counter clockwise
-      leftSpeed.data = -1.0;
+    switch(input)
+    {
+      case 'q': leftSpeed -= .5; break;
+      case 'e': rightSpeed -= .5; break;
+      case 'a': leftSpeed += .5; break;
+      case 'd': rightSpeed += .5; break;
+      default: leftSpeed = rightSpeed = 0;
     }
     
-    if (input == 'a') {
-      //rotate clockwise
-      head_position += 0.1;
-    }
-    if (input == 's') {
-      //rotate counter clockwise
-      head_position -= 0.1;
-    }
-    headMsg.data = head_position;
-    
-    headPub.publish(headMsg);
-    leftPub.publish(leftSpeed);
+    // send messages
+    std_msgs::Float64 msgLeft, msgRight;
+    msgLeft.data = leftSpeed;
+    msgRight.data = rightSpeed;
+    leftWheelPub.publish(msgLeft);
+    rightWheelPub.publish(msgRight);
+    std::cout << "current speeds: " << leftSpeed << ", " << rightSpeed << "\n";
   }
   
   return 0;
