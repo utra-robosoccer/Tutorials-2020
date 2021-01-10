@@ -18,4 +18,9 @@
   <exec_depend>rviz</exec_depend>
   <exec_depend>xacro</exec_depend>
 
+  <!-- Let Gazebo know where our world files are within this package -->
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}/world"/>
+  </export>
+
 </package>
