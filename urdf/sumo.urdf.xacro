@@ -26,7 +26,7 @@
   
   <xacro:wheel prefix="right" radius="0.05" reflect="1" />
   <xacro:wheel prefix="left" radius="0.05" reflect="-1" />
-  <xacro:camera />
+  <xacro:front_camera name = "camera" />
   
   <link name="back_wheel">
     <visual>

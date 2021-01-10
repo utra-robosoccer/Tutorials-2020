@@ -2,14 +2,70 @@
 #include "std_msgs/Float64.h"
 
 #include <iostream>
+// Include opencv3
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
+
+// Include CvBridge, Image Transport, Image msg
+#include <image_transport/image_transport.h>
+#include <cv_bridge/cv_bridge.h>
+#include <sensor_msgs/image_encodings.h>
+
+class vision{
+    image_transport::Subscriber image_subscriber;
+    image_transport::Publisher image_publisher;
+public:
+    ros::NodeHandle nh;
+
+    vision(){
+        image_transport::ImageTransport it(nh);
+        image_subscriber = it.subscribe("sumo/camera1/image_raw", 1, &vision::imageCallback, this);
+        image_publisher = it.advertise("sumo/camera1/line_image",1);
+    }
+    void imageCallback(const sensor_msgs::ImageConstPtr &msg) {
+        try {
+            const cv::Mat image = cv_bridge::toCvShare(msg, "bgr8")->image;
+
+            // Detect Field Lines (Copy from simulink)
+            cv::Mat dst, cdst;
+
+            cvtColor(image, cdst, CV_BGR2GRAY);
+
+
+            cv::rectangle(cdst, cv::Point(0,0), cv::Point(800,400), cv::Scalar(0, 0, 0), -1, 8);
+
+
+            sensor_msgs::ImagePtr message = cv_bridge::CvImage(std_msgs::Header(), "bgr8", cdst).toImageMsg();
+            //if(image_publisher.getNumSubscribers() > 1){
+
+            image_publisher.publish(message);
+
+        } catch (const cv_bridge::Exception &e) {
+            ROS_ERROR_STREAM("CV Exception" << e.what());
+        }
+
+    }
+
+};
 
 int main(int argc, char **argv) {
+    ros::init(argc, argv, "soccer_fieldline_detector");
+
+    vision hi;
+
+    ros::spin();
+
+    return 0;
+}
+/*int main(int argc, char **argv) {
   ros::init(argc, argv, "talker");
   ros::NodeHandle n;
-  
+
   ros::Publisher leftWheelPub = n.advertise<std_msgs::Float64>("/sumo_left_wheel_controller/command", 1000);
   ros::Publisher rightWheelPub = n.advertise<std_msgs::Float64>("/sumo_right_wheel_controller/command", 1000);
-  
+
+
+
   float leftSpeed = 0;
   float rightSpeed = 0;
   
@@ -38,4 +94,4 @@ int main(int argc, char **argv) {
   }
   
   return 0;
-}
+}*/

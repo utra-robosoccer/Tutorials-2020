@@ -17,5 +17,9 @@
   <exec_depend>rqt_robot_steering</exec_depend>
   <exec_depend>rviz</exec_depend>
   <exec_depend>xacro</exec_depend>
-
+  <depend>geometry_msgs</depend>
+  <depend>libopencv-dev</depend>
+  <depend>cv_bridge</depend>
+  <depend>image_transport</depend>
+  <depend>video_stream_opencv</depend>
 </package>

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="sumo">
-  <xacro:macro name="camera">
+  <xacro:macro name="front_camera" params="name">
     <!-- Camera -->
     <link name="camera_link">
       <visual>
