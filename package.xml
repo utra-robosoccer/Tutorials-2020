@@ -22,4 +22,12 @@
   <depend>cv_bridge</depend>
   <depend>image_transport</depend>
   <depend>video_stream_opencv</depend>
+
+
+  <!-- Let Gazebo know where our world files are within this package -->
+  <export>
+    <gazebo_ros gazebo_media_path="${prefix}/world"/>
+  </export>
+
+
 </package>
