@@ -48,7 +48,7 @@
       </surface>
     </collision>
     <inertial>
-      <mass value="0.10"/>
+      <mass value="0.5"/>
       <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.03"/>
     </inertial>
   </link>
