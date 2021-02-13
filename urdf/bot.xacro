@@ -2,34 +2,34 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
 
-  <xacro:include filename="$(find tutorial)/urdf/arm.xacro" />
-  <xacro:include filename="$(find tutorial)/urdf/head.xacro" />
-  
-  <link name="base_link">
-    <visual>
-      <geometry>
-        <box size=".07 .09 .12"/>
-      </geometry>
-    </visual>
-    <collision>
-      <geometry>
-        <box size=".07 .09 .12"/>
-      </geometry>
-    </collision>
-    <inertial>
-      <mass value="1"/>
-      <inertia ixx="0.21" ixy="0.00" ixz="0.00" iyy="0.27" iyz="0.00" izz="0.10"/>
-    </inertial>
-  </link>
-  
-  <xacro:arm prefix="right" length="0.06" radius="0.01" reflect="1" />
-  <xacro:arm prefix="left" length="0.06" radius="0.01" reflect="-1" />
-  <xacro:head />
-  
-  <!-- Add ROS plugin so we can interact with our robot -->
-  <gazebo>
-    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
-      <robotNamespace>/</robotNamespace>
-    </plugin>
-  </gazebo>
+    <xacro:include filename="$(find tutorial)/urdf/arm.xacro" />
+    <xacro:include filename="$(find tutorial)/urdf/head.xacro" />
+    
+    <link name="base_link">
+        <visual>
+            <geometry>
+                <box size=".07 .09 .12"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size=".07 .09 .12"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="1"/>
+            <inertia ixx="0.21" ixy="0.00" ixz="0.00" iyy="0.27" iyz="0.00" izz="0.10"/>
+        </inertial>
+    </link>
+    
+    <xacro:arm prefix="right" length="0.06" radius="0.01" reflect="1" />
+    <xacro:arm prefix="left" length="0.06" radius="0.01" reflect="-1" />
+    <xacro:head />
+    
+    <!-- Add ROS plugin so we can interact with our robot -->
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
 </robot>
