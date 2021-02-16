@@ -8,22 +8,22 @@
     <link name="base_link">
         <visual>
             <geometry>
-                <box size=".07 .09 .12"/>
+                <box size="1 1 1"/>
             </geometry>
         </visual>
         <collision>
             <geometry>
-                <box size=".07 .09 .12"/>
+                <box size="1 1 1"/>
             </geometry>
         </collision>
         <inertial>
             <mass value="1"/>
-            <inertia ixx="0.21" ixy="0.00" ixz="0.00" iyy="0.27" iyz="0.00" izz="0.10"/>
+            <inertia ixx="0.21" ixy="0" ixz="0" iyy="0.27" iyz="0" izz="0.10"/>
         </inertial>
     </link>
     
-    <xacro:arm prefix="right" length="0.06" radius="0.01" reflect="1" />
-    <xacro:arm prefix="left" length="0.06" radius="0.01" reflect="-1" />
+    <xacro:arm prefix="right" length=".7" radius=".2" reflect="1" />
+    <xacro:arm prefix="left" length=".7" radius=".2" reflect="-1" />
     <xacro:head />
     
     <!-- Add ROS plugin so we can interact with our robot -->

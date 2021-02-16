@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- our xacro/urdf model -->
-  <arg name="model" value="$(find tutorial)/urdf/bot.xacro"/>
+  <arg name="model" value="$(find tutorial)/urdf/main.xacro"/>
 
   <!-- load our urdf model (string) into global parameter called "robot_description"-->
   <!-- xacro parses xacro files and returns a urdf file -->
