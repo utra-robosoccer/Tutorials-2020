@@ -6,12 +6,12 @@
 
 ## Prerequisites
 - have ubuntu and ROS installed
-- have catkin_ws/src folder created in home folder
 
 ## Cloning the repo
-From home directory go to your /catkin_ws/src folder and run the following command
+From home directory create /catkin_ws/src folder and run the following command
 ```
-cd ~/catkin_ws/src
+mkdir -p catkin_ws/src
+cd catkin_ws/src
 git clone https://github.com/utra-robosoccer/Tutorials-2020.git
 ```
 
