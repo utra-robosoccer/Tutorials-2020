@@ -58,7 +58,7 @@ rosrun tutorial my_publisher
 
 To send a command to the left arm
 ```
-rostopic pub/left_arm_controller/command std_msgs/Float64 1
+rostopic pub /left_arm_controller/command std_msgs/Float64 "data: 1.0"
 ```
 
 To see the ROS node tree run this command
