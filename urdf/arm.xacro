@@ -1,24 +1,24 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_robot">
-<xacro:macro name="arm" params="prefix radius length reflect">
+<xacro:macro name="arm" params="prefix radius length reflect_x reflect_y">
 
     <!-- rpy (roll pitch yaw) describes rotation in radians -->
     <!-- xyz describes translation in meters -->
     <link name="${prefix}_arm">
         <visual>
-            <origin rpy="0 0 0" xyz="0 0 1"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
+            <origin rpy="${pi/2} 0 0" xyz="0 0 0"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
             <geometry>
-                <cylinder length="${length}" radius="${radius}"/>
+            	<cylinder length="${length}" radius="${radius}"/>
             </geometry>
         </visual>
         <collision>
-            <origin rpy="0 0 0" xyz="0 0 1"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
+            <origin rpy="${pi/2} 0 0" xyz="0 0 0"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
             <geometry>
-                <cylinder length="${length}" radius="${radius}"/>
+             	<cylinder length="${length}" radius="${radius}"/>
             </geometry>
         </collision>
         <inertial>
-            <origin rpy="0 0 0" xyz="0 0 1"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
+            <origin rpy="${pi/2} 0 0" xyz="0 0 0"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
             <mass value="1"/>
             <inertia ixx="0.06" ixy="0.0" ixz="0.0" iyy="0.06" iyz="0.0" izz="0.25"/>
         </inertial>
@@ -27,12 +27,35 @@
 
     <joint name="base_to_${prefix}_arm" type="continuous">
         <axis xyz="0 1 0"/>
-        <parent link="base_link"/>
+        <parent link="${prefix}_arm_turn"/>
         <child link="${prefix}_arm"/>
-        <origin rpy="0.2 0 0" xyz="0 ${reflect*0.7} 0"/> <!-- move the child_frame with respect to parent_frame -->
-        <limit effort="30" velocity="1.0"/>
+        <origin rpy="0 0 0" xyz="0 0 0"/> <!-- move the child_frame with respect to parent_frame -->
+        <limit effort="30" velocity="5.0"/>
     </joint>
 
+ <link name="${prefix}_arm_turn">
+	<visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
+            <geometry>
+            </geometry>
+        </visual>
+        <collision>
+        </collision>
+        <inertial>
+            <origin rpy="${pi/2} 0 0" xyz="0 0 0"/> <!-- set the origin to 0 to recenter the link to the child_frame -->
+            <mass value="1"/>
+            <inertia ixx="0.06" ixy="0.0" ixz="0.0" iyy="0.06" iyz="0.0" izz="0.25"/>
+        </inertial>
+    </link>
+
+
+    <joint name="base_to_${prefix}_arm_turn" type="continuous">
+        <axis xyz="0 0 1"/>
+        <parent link="base_link"/>
+        <child link="${prefix}_arm_turn"/>
+        <origin rpy="0 0 0" xyz="${reflect_x*0.6} ${reflect_y*0.6} 0"/> <!-- move the child_frame with respect to parent_frame -->
+        <limit effort="30" velocity="5.0"/>
+    </joint>
 
     <transmission name="${prefix}_arm_transmission">
         <type>transmission_interface/SimpleTransmission</type>
@@ -42,8 +65,19 @@
         <joint name="base_to_${prefix}_arm">
             <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
         </joint>
+   
     </transmission>
 
+    <transmission name="${prefix}_arm_transmission_turn">
+        <type>transmission_interface/SimpleTransmission</type>
+        <actuator name="$${prefix}_motor">
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+        <joint name="base_to_${prefix}_arm_turn">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+   
+    </transmission>
 
 </xacro:macro>
 </robot>

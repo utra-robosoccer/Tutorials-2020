@@ -40,8 +40,14 @@
         pkg="controller_manager"
         type="spawner"
         args="joint_state_controller
-              right_arm_controller
-              left_arm_controller
+              front_right_arm_controller
+              front_left_arm_controller
+              back_right_arm_controller
+              back_left_arm_controller
+              front_right_arm_controller_turn
+              front_left_arm_controller_turn
+              back_right_arm_controller_turn
+              back_left_arm_controller_turn
               head_controller" />
 </launch>
 

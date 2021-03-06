@@ -6,10 +6,34 @@ head_controller:
   type: "position_controllers/JointPositionController"
   joint: base_to_head
 
-right_arm_controller:
+front_right_arm_controller:
   type: "velocity_controllers/JointVelocityController"
-  joint: base_to_right_arm
+  joint: base_to_front_right_arm
 
-left_arm_controller:
+front_left_arm_controller:
   type: "velocity_controllers/JointVelocityController"
-  joint: base_to_left_arm
+  joint: base_to_front_left_arm
+  
+back_right_arm_controller:
+  type: "velocity_controllers/JointVelocityController"
+  joint: base_to_back_right_arm
+  
+back_left_arm_controller:
+  type: "velocity_controllers/JointVelocityController"
+  joint: base_to_back_left_arm
+
+front_right_arm_controller_turn:
+  type: "position_controllers/JointPositionController"
+  joint: base_to_front_right_arm_turn
+
+front_left_arm_controller_turn:
+  type: "position_controllers/JointPositionController"
+  joint: base_to_front_left_arm_turn
+  
+back_right_arm_controller_turn:
+  type: "position_controllers/JointPositionController"
+  joint: base_to_back_right_arm_turn
+  
+back_left_arm_controller_turn:
+  type: "position_controllers/JointPositionController"
+  joint: base_to_back_left_arm_turn

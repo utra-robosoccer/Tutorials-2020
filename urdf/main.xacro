@@ -7,23 +7,28 @@
     
     <link name="base_link">
         <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <box size="1 1 1"/>
+                <box size="1.5 1 0.5"/>
             </geometry>
         </visual>
         <collision>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
             <geometry>
-                <box size="1 1 1"/>
+                <box size="1.5 1 0.5"/>
             </geometry>
         </collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
         <inertial>
             <mass value="1"/>
             <inertia ixx="0.21" ixy="0" ixz="0" iyy="0.27" iyz="0" izz="0.10"/>
         </inertial>
     </link>
     
-    <xacro:arm prefix="right" length=".7" radius=".2" reflect="1" />
-    <xacro:arm prefix="left" length=".7" radius=".2" reflect="-1" />
+    <xacro:arm prefix="front_right" length=".125" radius=".5" reflect_x="1" reflect_y= "1"/>
+    <xacro:arm prefix="front_left" length=".125" radius=".5" reflect_x="1" reflect_y= "-1"/>
+    <xacro:arm prefix="back_right" length=".125" radius=".5" reflect_x="-1" reflect_y="1"/>
+    <xacro:arm prefix = "back_left" length=".125" radius=".5" reflect_x="-1" reflect_y="-1"/>
     <xacro:head />
     
     <!-- Add ROS plugin so we can interact with our robot -->

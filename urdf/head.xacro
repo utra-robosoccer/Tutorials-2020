@@ -5,13 +5,13 @@
 
     <link name="head_link">
         <visual>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <origin rpy="0 0 0" xyz="0.25 0 -0.25"/>
             <geometry>
                 <mesh filename="package://tutorial/urdf/head.dae" scale="5 5 5"/>
             </geometry>
         </visual>
         <collision>
-            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <origin rpy="0 0 0" xyz="0.25 0 -0.25"/>
             <geometry>
                 <sphere radius=".2"/>
             </geometry>
