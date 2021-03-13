@@ -17,7 +17,7 @@ find_package(catkin REQUIRED COMPONENTS
         ${PKG_DEPS}
         ${OpenCV_INCLUDE_DIRS})
 
-find_package(OpenCV 3 REQUIRED)
+find_package(OpenCV 4.2.0 REQUIRED)
 
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations

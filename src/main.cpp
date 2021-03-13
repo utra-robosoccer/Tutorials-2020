@@ -43,7 +43,7 @@ public:
             image_publisher.publish(cv_ptr->toImageMsg());
 
 
-            CvScalar color = cv_ptr->image.at<uchar>(cv::Point(400,700));
+            CvScalar color = cv_ptr->image.at<CvScalar>(cv::Point(400,700));
 
             printf("%f\n", color.val[0]);//Prints the color of the pixel. Black is 0, White is 255
 
