@@ -40,12 +40,13 @@ public:
             cv_ptr = cv_bridge::cvtColor(cv_ptr,"mono8");//Grey scale
             cv::threshold(cv_ptr->image,cv_ptr->image, 100, 255,0);// threshold
             cv::rectangle(cv_ptr->image, cv::Point(0,0), cv::Point(800,400), cv::Scalar(0, 0, 0), -1, 8);//draw rectangle
+
+
+
+            cv::Vec3b color = cv_ptr->image.at<cv::Vec3b>(cv::Point(400,700));
+
             image_publisher.publish(cv_ptr->toImageMsg());
-
-
-            CvScalar color = cv_ptr->image.at<CvScalar>(cv::Point(400,700));
-
-            printf("%f\n", color.val[0]);//Prints the color of the pixel. Black is 0, White is 255
+            printf("%d %d %d\n", color[0], color[1], color[2]);//Prints the color of the pixel. Black is 0, White is 255
 
             //Here add a way of controlling the robot movement to follow the line based on the color of the pixel
 
