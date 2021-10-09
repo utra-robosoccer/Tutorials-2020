@@ -25,7 +25,7 @@ rosdep install --from-paths src --ignore-src -r -y --rosdistro melodic
 ## Installing Controllers For Robot
 ```
 sudo apt-get update
-sudo apt-get install ros-melodic-ros-controllers
+sudo apt-get install ros-noetic-ros-controllers
 ```
 
 
