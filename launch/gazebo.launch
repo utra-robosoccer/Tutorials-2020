@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <!-- our xacro/urdf model -->
-  <arg name="model" value="$(find sumo)/urdf/sumo.urdf.xacro"/>
+  <arg name="model" value="$(find computer_vision_pkg)/urdf/sumo.urdf.xacro"/>
 
   <!-- load our urdf model (string) into global parameter called "robot_description"-->
   <!-- xacro parses xacro files and returns a urdf file -->
@@ -15,7 +15,7 @@
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="headless" value="false"/>
-    <arg name="world_name" value="$(find sumo)/world/course.world" />
+    <arg name="world_name" value="$(find computer_vision_pkg)/world/course.world" />
   </include>
 
 
@@ -34,7 +34,7 @@
   <!-- load multiple values stored in .yaml file into global parameters -->
   <!-- parameters store motor controller configurations -->
   <rosparam command="load"
-            file="$(find sumo)/config/joints.yaml" />
+            file="$(find computer_vision_pkg)/config/joints.yaml" />
   
   <!-- Spawn controllers -->
   <node name="sumo_controller_spawner"

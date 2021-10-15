@@ -6,7 +6,7 @@
     <link name="camera_link">
       <visual>
         <geometry>
-          <mesh filename="package://sumo/meshes/head.dae" scale=".5 .5 .5"/>
+          <mesh filename="package://computer_vision_pkg/meshes/head.dae" scale=".5 .5 .5"/>
         </geometry>
       </visual>
       <collision>

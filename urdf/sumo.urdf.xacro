@@ -2,8 +2,8 @@
 
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="sumo">
 
-  <xacro:include filename="$(find sumo)/urdf/wheel.xacro" />
-  <xacro:include filename="$(find sumo)/urdf/camera.xacro" />
+  <xacro:include filename="$(find computer_vision_pkg)/urdf/wheel.xacro" />
+  <xacro:include filename="$(find computer_vision_pkg)/urdf/camera.xacro" />
   
   <xacro:property name="base_length" value=".15" />
   

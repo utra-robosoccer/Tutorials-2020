@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>sumo</name>
+  <name>computer_vision_pkg</name>
   <version>0.0.0</version>
-  <description>The sumo package</description>
+  <description>The vision package</description>
   <maintainer email="nam@todo.todo">nam</maintainer>
   <license>TODO</license>
 
