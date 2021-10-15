@@ -30,7 +30,7 @@
       <axis xyz="0 0 1"/>
       <parent link="base_link"/>
       <child link="${prefix}_wheel"/>
-      <origin rpy="1.57075 0 0" xyz=".05 ${0.06*reflect} 0.00"/>
+      <origin rpy="1.57075 0 0" xyz=".03 ${0.06*reflect} 0.01"/>
     </joint>
     
     <transmission name="${prefix}_wheel_transmission">

@@ -25,7 +25,9 @@
         type="spawn_model"
         respawn="false"
         output="screen"
-        args="-z 1.0
+        args="-z 0.0
+              -x 1.0
+              -y 2.3
               -unpause
               -urdf
               -model robot

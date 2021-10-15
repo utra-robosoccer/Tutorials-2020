@@ -38,17 +38,9 @@
       <geometry>
         <sphere radius="0.02"/>
       </geometry>
-      <surface>
-        <friction>
-          <ode>
-            <mu>200.0</mu>
-            <mu2>100.0</mu2>
-          </ode>
-        </friction>
-      </surface>
     </collision>
     <inertial>
-      <mass value="0.5"/>
+      <mass value="1"/>
       <inertia ixx="0.03" ixy="0.0" ixz="0.0" iyy="0.03" iyz="0.0" izz="0.03"/>
     </inertial>
   </link>
@@ -56,8 +48,26 @@
   <joint name="base_to_back_wheel" type="fixed">
     <parent link="base_link"/>
     <child link="back_wheel"/>
-    <origin rpy="0 0 0" xyz="-0.06 0.00 -0.03"/>
+    <origin rpy="0 0 0" xyz="-0.04 0.00 -0.02"/>
   </joint>
+  
+  <gazebo reference="back_wheel">
+    <material>Gazebo/Blue</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+    <slip1>1.0</slip1>
+    <slip2>1.0</slip2>
+    <selfCollide>true</selfCollide>
+    <gravity>true</gravity>
+  </gazebo>
+  
+  <gazebo reference="base_link">
+    <material>Gazebo/White</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+    <selfCollide>true</selfCollide>
+    <gravity>true</gravity>
+  </gazebo>
   
   <!-- Add ROS plugin so we can interact with our robot -->
   <gazebo>
