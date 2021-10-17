@@ -26,7 +26,7 @@ include_directories(include
         ${OpenCV_INCLUDE_DIRS}
         )
 
-add_executable(motor_controller src/main.cpp)
+add_executable(motor_controller src/motor_controller.cpp)
 target_link_libraries(motor_controller
         ${catkin_LIBRARIES}
         )
