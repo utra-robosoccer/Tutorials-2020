@@ -42,10 +42,10 @@
   <node name="sumo_controller_spawner"
         pkg="controller_manager"
         type="spawner"
-        args="sumo_joint_state_controller
-              sumo_right_wheel_controller
-              sumo_left_wheel_controller
-              sumo_camera_controller" />
+        args="joint_state_controller
+              right_wheel_controller
+              left_wheel_controller
+              camera_controller" />
 </launch>
 
 
