@@ -16,7 +16,12 @@ void commandsCallback(const std_msgs::String::ConstPtr& msg) {
   {
     leftSpeed = -1.0;
     rightSpeed = -1.0;
-  } 
+  }
+  else if(command == "GO_REALLY_FAST")
+  {
+    leftSpeed = -10.0; // radians per second
+    rightSpeed = -10.0;
+  }
   else if(command == "BACK") 
   {
     leftSpeed = 0.5;
