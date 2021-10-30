@@ -13,6 +13,11 @@ cd catkin_ws/src
 git clone https://github.com/utra-robosoccer/Tutorials-2020.git
 ```
 
+## Switch To computer_vision branch
+```
+git switch computer_vision
+```
+
 ## Updating Dependencies
 ```
 cd ~/catkin_ws/
@@ -24,7 +29,7 @@ rosdep install --from-paths src --ignore-src -r -y --rosdistro noetic
 Sourcing setup file so helps the system know where to look for your built files
 ```
 cd ~/catkin_ws
-catkin build sumo
+catkin build computer_vision_pkg
 source devel/setup.bash
 ```
 
