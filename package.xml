@@ -22,6 +22,9 @@
   <depend>cv_bridge</depend>
   <depend>image_transport</depend>
   <depend>video_stream_opencv</depend>
+  <depend>rospy</depend>
+  <depend>std_msgs</depend>
+  <depend>python3-opencv</depend>
 
 
   <!-- Let Gazebo know where our world files are within this package -->
