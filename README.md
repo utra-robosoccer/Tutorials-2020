@@ -1,4 +1,4 @@
-# Winter Break Tutorials
+# Computer Vision Tutorial
 
 - The publisher portion is based on this [ROS tutorial](https://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber%28c%2B%2B%29)
 
